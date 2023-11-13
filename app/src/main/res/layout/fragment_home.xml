@@ -58,5 +58,5 @@
         android:layout_height="wrap_content"
         android:text="TextView" />
 
-    <!-- Add more TextView elements for displaying exercise details -->
+    <!-- Ad more TextView elements for displaying exercise details -->
 </RelativeLayout>
