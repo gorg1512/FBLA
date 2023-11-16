@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.fbla.R
 import com.example.fbla.databinding.FragmentHomeBinding
-import android.widget.Toast
+
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -21,43 +18,34 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.text
 
-        // Observe changes in the list of workouts
-        homeViewModel.workouts.observe(viewLifecycleOwner) { workouts ->
-            // Update the UI with the latest list of workouts
-            displayWorkouts(workouts)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+
+        binding.btnAddWorkoutLinearLayout.setOnClickListener {
+            addNewWorkout()
         }
 
-        val myButton: Button = binding.root.findViewById(R.id.btnAddWorkout)
-
-        myButton.setOnClickListener {
-            // Handle button click to add a new workout
-            addNewWorkout()
+        homeViewModel.workouts.observe(viewLifecycleOwner) { workouts ->
+            displayWorkouts(workouts)
         }
 
         return root
     }
 
     private fun displayWorkouts(workouts: List<Workout>) {
-        // Assuming you have a TextView with the ID "workoutList" to display workouts
-        val workoutListTextView: TextView = binding.root.findViewById(R.id.btnAddWorkout)
 
-        // Build a string with workout details and set it to the TextView
-        val workoutDetails = buildWorkoutDetails(workouts)
-        workoutListTextView.text = workoutDetails
+        binding.workoutList.text = buildWorkoutDetails(workouts)
     }
 
     private fun buildWorkoutDetails(workouts: List<Workout>): String {
         val stringBuilder = StringBuilder()
         for (workout in workouts) {
-            stringBuilder.append("Workout: ${workout.name}, Duration: ${workout.durationMinutes} minutes\n")
-            // Add more details as needed
+            stringBuilder.append("Workout: ${workout.name}, Duration: ${workout.durationMinutes} minutes\n\n\n")
+
         }
         return stringBuilder.toString()
     }

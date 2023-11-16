@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
@@ -15,49 +14,24 @@
         android:layout_marginTop="16dp"
         android:textSize="24sp"/>
 
-    <TextView
-        android:id="@+id/textWorkoutDescription"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chest and Triceps"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/text"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"/>
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_below="@id/text">
 
-    <TextView
-        android:id="@+id/textExerciseName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bench Press"
-        android:layout_below="@id/textWorkoutDescription"
-        android:layout_marginTop="32dp"
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/workoutList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:padding="16dp" />
 
-    <TextView
-        android:id="@+id/textExerciseSetsReps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3 sets x 10 reps"
-        android:layout_below="@id/textExerciseName"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"/>
-
-    <!-- Button to add workouts -->
-    <Button
-        android:id="@+id/btnAddWorkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Workout"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/textExerciseSetsReps"
-        android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <!-- Ad more TextView elements for displaying exercise details -->
+        <Button
+            android:id="@+id/btnAddWorkoutLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Workout" />
+    </LinearLayout>
 </RelativeLayout>
