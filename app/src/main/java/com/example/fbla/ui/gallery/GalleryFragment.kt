@@ -12,31 +12,38 @@ import com.example.fbla.databinding.FragmentGalleryBinding
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private val motivationalQuotes = listOf(
+        "Believe you can and you're halfway there.",
+        "The only way to do great work is to love what you do.",
+        "Don't watch the clock; do what it does. Keep going.",
+        // Add more quotes as needed
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
-
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
+        // Display a random quote
+        displayRandomQuote(textView)
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun displayRandomQuote(textView: TextView) {
+        val randomIndex = (0 until motivationalQuotes.size).random()
+        textView.text = motivationalQuotes[randomIndex]
     }
 }
